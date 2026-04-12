@@ -45,6 +45,7 @@ p_polyobj.c
 p_saveg.c
 p_setup.c
 p_sight.c
+p_sm64.c
 p_spec.c
 p_telept.c
 p_tick.c

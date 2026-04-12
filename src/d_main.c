@@ -77,6 +77,7 @@
 #include "m_perfstats.h"
 #include "m_random.h"
 #include "command.h"
+#include "p_sm64.h"
 
 #ifdef CMAKECONFIG
 #include "config.h"
@@ -1556,6 +1557,10 @@ void D_SRB2Main(void)
 	wipegamestate = gamestate;
 
 	savedata.lives = 0; // flag this as not-used
+
+	// init sm64 stuff
+	CONS_Printf("SM64_Init(): Init libsm64.\n");
+	SM64_Init();
 
 	//------------------------------------------------ COMMAND LINE PARAMS
 

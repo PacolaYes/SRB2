@@ -36,6 +36,7 @@
 #include "p_slopes.h"
 #include "f_finale.h"
 #include "m_cond.h"
+#include "p_sm64.h"
 #include "netcode/net_command.h"
 
 static CV_PossibleValue_t CV_BobSpeed[] = {{0, "MIN"}, {4*FRACUNIT, "MAX"}, {0, NULL}};
@@ -11686,6 +11687,10 @@ void P_SpawnPlayer(INT32 playernum)
 	//awayview stuff
 	p->awayviewmobj = NULL;
 	p->awayviewtics = 0;
+
+	if (!p->marioID) {
+		SM64_marioInit(p);
+	}
 
 	// set the scale to the mobj's destscale so settings get correctly set.  if we don't, they sometimes don't.
 	P_SetScale(mobj, mobj->destscale, true);
