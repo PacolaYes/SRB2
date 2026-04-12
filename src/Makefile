@@ -165,7 +165,7 @@ opts:=-DCOMPVERSION -g -fwrapv
 libs:=
 
 # add libsm64 to the stuff i think
-opts+=--I../libs/libsm64/include
+opts+=-I../libs/libsm64/include
 libs+=-L../libs/libsm64 -lsm64
 
 # This is a list of variables names, of which if defined,
