@@ -20,6 +20,7 @@
 #include "p_setup.h"
 #include "p_spec.h"
 #include "p_saveg.h"
+#include "p_sm64.h"
 
 #include "i_time.h"
 #include "i_sound.h" // for I_PlayCD()..
@@ -7743,6 +7744,7 @@ static void P_InitPlayers(void)
 
 		// Start players with pity shields if possible
 		players[i].pity = -1;
+		players[i].marioID = -1;
 
 		players[i].mo = NULL;
 
@@ -8079,6 +8081,8 @@ boolean P_LoadLevel(boolean fromnetsave, boolean reloadinggamestate)
 
 	// set up world state
 	P_SpawnSpecials(fromnetsave);
+
+	SM64_LevelInit();
 
 	if (!fromnetsave) //  ugly hack for P_NetUnArchiveMisc (and P_LoadNetGame)
 		P_SpawnPrecipitation();

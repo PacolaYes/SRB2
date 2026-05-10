@@ -591,6 +591,8 @@ static void P_NetArchivePlayers(save_t *save_p)
 		P_WriteFixed(save_p, players[i].jumpfactor);
 		P_WriteFixed(save_p, players[i].height);
 		P_WriteFixed(save_p, players[i].spinheight);
+
+		P_WriteSINT8(save_p, players[i].marioID);
 	}
 }
 
@@ -806,6 +808,8 @@ static void P_NetUnArchivePlayers(save_t *save_p)
 		players[i].jumpfactor = P_ReadFixed(save_p);
 		players[i].height = P_ReadFixed(save_p);
 		players[i].spinheight = P_ReadFixed(save_p);
+
+		players[i].marioID = P_ReadSINT8(save_p);
 
 		players[i].viewheight = 41*players[i].height/48; // scale cannot be factored in at this point
 	}

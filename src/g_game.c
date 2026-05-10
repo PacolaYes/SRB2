@@ -2617,6 +2617,7 @@ void G_PlayerReborn(INT32 player, boolean betweenmaps)
 	INT16 spheres;
 	INT16 playerangleturn;
 	INT16 oldrelangleturn;
+	SINT8 marioID;
 
 	score = players[player].score;
 	lives = players[player].lives;
@@ -2681,6 +2682,8 @@ void G_PlayerReborn(INT32 player, boolean betweenmaps)
 	mare = players[player].mare;
 	bot = players[player].bot;
 	pity = players[player].pity;
+
+	marioID = players[player].marioID;
 
 	if (betweenmaps || !G_IsSpecialStage(gamemap))
 	{
@@ -2758,6 +2761,7 @@ void G_PlayerReborn(INT32 player, boolean betweenmaps)
 	p->pity = pity;
 	p->rings = rings;
 	p->spheres = spheres;
+	p->marioID = marioID;
 
 	// Don't do anything immediately
 	p->pflags |= PF_SPINDOWN;

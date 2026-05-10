@@ -11688,8 +11688,10 @@ void P_SpawnPlayer(INT32 playernum)
 	p->awayviewmobj = NULL;
 	p->awayviewtics = 0;
 
-	if (!p->marioID) {
+	if (p->marioID == -1) {
+		CONS_Printf("pre p->marioID: %d\n", p->marioID);
 		SM64_marioInit(p);
+		CONS_Printf("post p->marioID: %d\n", p->marioID);
 	}
 
 	// set the scale to the mobj's destscale so settings get correctly set.  if we don't, they sometimes don't.

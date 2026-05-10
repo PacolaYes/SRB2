@@ -12,6 +12,8 @@
 #include "m_fixed.h"
 #include "m_misc.h"
 
+#include "r_state.h"
+
 #include "z_zone.h"
 
 void SM64_Init() {
@@ -40,9 +42,20 @@ void SM64_Init() {
 
 void SM64_marioInit(player_t *p) {
     // TODO: this needs geometry to properly work, so figure that one out next
-    int32_t marioId = sm64_mario_create( FIXED_TO_FLOAT(p->mo->x), FIXED_TO_FLOAT(p->mo->z), FIXED_TO_FLOAT(p->mo->y));
+    SINT8 marioId = (SINT8)sm64_mario_create( FIXED_TO_FLOAT(p->mo->x), FIXED_TO_FLOAT(p->mo->z), FIXED_TO_FLOAT(p->mo->y));
     CONS_Printf("marioID: %d\n", marioId);
     p->marioID = marioId;
 
     CONS_Printf("Mario initiated.\n");
+}
+
+void SM64_LevelInit() {
+    size_t i;
+    sector_t sector;
+
+    for (i = 0; i < numsectors; i++) {
+        sector = sectors[i];
+
+        CONS_Printf("sector %i: %d\n", (int)i, sector.floorheight/FRACUNIT);
+    }
 }

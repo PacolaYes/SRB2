@@ -226,7 +226,8 @@ enum player_e
 	player_quittime,
 	player_lastinputtime,
 	player_ping,
-	player_fovadd
+	player_fovadd,
+	player_marioID
 };
 
 static const char *const player_opt[] = {
@@ -375,6 +376,7 @@ static const char *const player_opt[] = {
 	"lastinputtime",
 	"ping",
 	"fovadd",
+	"marioID",
 	NULL,
 };
 
@@ -838,6 +840,8 @@ static int player_get(lua_State *L)
 	case player_fovadd:
 		lua_pushfixed(L, plr->fovadd);
 		break;
+	case player_marioID:
+		lua_pushinteger(L, plr->marioID);
 	default:
 		lua_getfield(L, LUA_REGISTRYINDEX, LREG_EXTVARS);
 		I_Assert(lua_istable(L, -1));
@@ -1362,6 +1366,8 @@ static int player_set(lua_State *L)
 	case player_fovadd:
 		plr->fovadd = luaL_checkfixed(L, 3);
 		break;
+	case player_marioID:
+		return NOSET;
 	default:
 		lua_getfield(L, LUA_REGISTRYINDEX, LREG_EXTVARS);
 		I_Assert(lua_istable(L, -1));
