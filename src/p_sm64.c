@@ -42,7 +42,7 @@ void SM64_Init() {
 
 void SM64_marioInit(player_t *p) {
     // TODO: this needs geometry to properly work, so figure that one out next
-    SINT8 marioId = (SINT8)sm64_mario_create( FIXED_TO_FLOAT(p->mo->x), FIXED_TO_FLOAT(p->mo->z), FIXED_TO_FLOAT(p->mo->y));
+    SINT8 marioId = (SINT8)sm64_mario_create( SRB2_TO_SM64_POS(p->mo->x), SRB2_TO_SM64_POS(p->mo->z), SRB2_TO_SM64_POS(p->mo->y));
     CONS_Printf("marioID: %d\n", marioId);
     p->marioID = marioId;
 
